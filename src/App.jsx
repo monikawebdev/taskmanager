@@ -1,33 +1,25 @@
-import React ,{useState,createContext, useContext, useEffect} from 'react';
-import { BrowserRouter as Router, Routes, Route , Navigate,useLocation } from 'react-router-dom';
-import { Link } from 'react-router-dom';
-import TaskPage from "./pages/TaskPage";
+import React, { useEffect } from 'react';
+import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
+import TaskPage from './pages/TaskPage';
 import Layout from './layouts/Layout';
 import Login from './auth/pages/Login';
+import Register from './auth/pages/Register';
+
 function App() {
-const isAuth = true;
-useEffect(()=>{
-  if(!isAuth){
-    // window.location.href='/login';
-  }
-},[isAuth])
+  const isAuth = localStorage.getItem('token');
+
   return (
-    <>
-     <Router>
+    <Router>
       <Routes>
-        <Route path="/" element={<Layout/>}>
-          {isAuth && <Route path="/" element={<TaskPage />} />}
-          <Route path="/login" element={<Login/>} />
-
-
-          {/* <Route path="*" element={<NotFound/>} /> */}
+        <Route path="/" element={<Layout />}>
+          <Route index element={isAuth ? <TaskPage /> : <Navigate to="/login" />} />
+          <Route path="login" element={<Login />} />
+          <Route path="register" element={<Register />} />
+          <Route path="*" element={<div>Page Not Found</div>} />
         </Route>
-
-
       </Routes>
-    </Router>        
-    </>
-  )
+    </Router>
+  );
 }
 
-export default App
+export default App;

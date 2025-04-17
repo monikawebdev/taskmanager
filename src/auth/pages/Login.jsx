@@ -16,20 +16,20 @@ const Login = () => {
         setError("");
     
         try {
-            const response = await api.post("/api/auth/login/email", { // Update endpoint to match the backend
+            const response = await api.post("/api/auth/login", { // Updated endpoint
                 email,
                 password,
             });
 
-            console.log(response.data)
-            localStorage.setItem("token", response.data);
+            console.log(response.data);
+            localStorage.setItem("token", response.data.token); // Save the token
     
             setTimeout(() => {
                 window.location.href = '/';
             }, 1500);
         } catch (err) {
             console.error(err);
-            setError(err.response?.data);
+            setError(err.response?.data?.error || "An unexpected error occurred"); // Handle error properly
         } finally {
             setLoading(false);
         }
@@ -106,33 +106,7 @@ const Login = () => {
                             className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-3 px-6 rounded-lg shadow-md transition duration-300 ease-in-out"
                             disabled={loading}
                         >
-                            {loading ? (
-                                <span className="flex items-center">
-                                    <svg
-                                        className="animate-spin h-5 w-5 mr-2 text-white"
-                                        xmlns="http://www.w3.org/2000/svg"
-                                        fill="none"
-                                        viewBox="0 0 24 24"
-                                    >
-                                        <circle
-                                            className="opacity-25"
-                                            cx="12"
-                                            cy="12"
-                                            r="10"
-                                            stroke="currentColor"
-                                            strokeWidth="4"
-                                        ></circle>
-                                        <path
-                                            className="opacity-75"
-                                            fill="currentColor"
-                                            d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.969 7.969 0 014 12H0c0 2.042.623 3.937 1.709 5.517l2.291-2.226z"
-                                        ></path>
-                                    </svg>
-                                    Logging in...
-                                </span>
-                            ) : (
-                                'Login'
-                            )}
+                            {loading ? 'Logging in...' : 'Login'}
                         </button>
                     </div>
                 </form>

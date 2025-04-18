@@ -95,6 +95,7 @@ const TaskPage = () => {
                 {/* Header */}
                 <div className="mb-6">
                     <h1 className="text-3xl font-bold text-left text-purple-800">Tasks Page</h1>
+                    <p className="text-lg text-gray-500 text-left">Your productivity at a glance</p>
                 </div>
 
                 {/* Add Task Section */}

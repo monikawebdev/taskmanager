@@ -44,10 +44,13 @@ const ProjectPage = () => {
     };
 
     return (
-        <div className="min-h-screen bg-gradient-to-b from-pink-200 via-purple-300 to-purple-400 flex justify-center items-center p-10">
-            <div className="bg-white rounded-lg shadow-lg p-10 w-full max-w-7xl">
+        <div className="min-h-screen bg-gradient-to-b from-pink-200 via-purple-300 to-purple-400 p-10">
+            {/* Projects Title Outside the Box */}
+            <h1 className="text-4xl font-bold text-purple-800 mb-6">Projects</h1>
+            <p className="text-lg text-gray-500 text-left">Your productivity at a glance</p>
+
+            <div className="bg-white rounded-lg shadow-lg p-10 w-full max-w-7xl mx-auto">
                 <div className="flex justify-between items-center mb-10">
-                    <h1 className="text-4xl font-bold text-purple-800">Projects</h1>
                     <button
                         onClick={addProject}
                         className="bg-pink-500 text-white px-6 py-3 rounded-lg shadow hover:bg-pink-600 transition"

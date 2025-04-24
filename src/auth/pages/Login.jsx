@@ -1,11 +1,10 @@
 import React, { useState } from 'react';
-import { api } from "../../axios/ApiAxios";
 import { useNavigate } from "react-router-dom";
+import { api } from "../../axios/ApiAxios";
 
 const Login = () => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
-    const [remembered, setRemembered] = useState(false);
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState("");
     const navigate = useNavigate();
@@ -16,7 +15,7 @@ const Login = () => {
         setError("");
     
         try {
-            const response = await api.post("/api/auth/login", { // Updated endpoint
+            const response = await api.post("/api/auth/login", {
                 email,
                 password,
             });
@@ -25,11 +24,11 @@ const Login = () => {
             localStorage.setItem("token", response.data.token); // Save the token
     
             setTimeout(() => {
-                window.location.href = '/';
+                navigate('/app/dashboard'); // Redirect to the correct Dashboard route
             }, 1500);
         } catch (err) {
             console.error(err);
-            setError(err.response?.data?.error || "An unexpected error occurred"); // Handle error properly
+            setError(err.response?.data?.error || "An unexpected error occurred");
         } finally {
             setLoading(false);
         }
@@ -88,17 +87,6 @@ const Login = () => {
                             required
                             aria-required="true"
                         />
-                    </div>
-                    <div className="mb-6 flex items-center">
-                        <input
-                            type="checkbox"
-                            className="form-checkbox h-4 w-4 text-blue-500"
-                            checked={remembered}
-                            onChange={(e) => setRemembered(e.target.checked)}
-                        />
-                        <label className="ml-2 text-gray-700 text-sm">
-                            Remember Me
-                        </label>
                     </div>
                     <div className="flex justify-center">
                         <button

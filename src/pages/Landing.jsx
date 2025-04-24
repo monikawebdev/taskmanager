@@ -1,60 +1,68 @@
-import React from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { Sun, Moon } from "lucide-react"; // Importing icons from lucide-react
 
 const Landing = () => {
-  const navigate = useNavigate(); // Hook to navigate between routes
+    const navigate = useNavigate(); // Hook to navigate between routes
+    const [darkMode, setDarkMode] = useState(false); // State for dark mode
 
-  const handleGetStartedClick = () => {
-    navigate("/login"); // Navigate to the Login page
-  };
+    const handleGetStartedClick = () => {
+        navigate("/register"); // Navigate to the Register page
+    };
 
-  return (
-    <div className="bg-purple-50 min-h-screen font-sans">
-      {/* Header */}
-      <header className="flex justify-between items-center px-8 py-6 bg-white shadow-md">
-        <div className="text-2xl font-bold text-purple-600">MyTasks</div>
-        <nav>
-          <ul className="flex space-x-8">
-            <li><a href="#home" className="text-gray-700 hover:text-purple-600">Home</a></li>
-            <li><a href="#about" className="text-gray-700 hover:text-purple-600">About</a></li>
-            <li><a href="#services" className="text-gray-700 hover:text-purple-600">Services</a></li>
-            <li><a href="#contact" className="text-gray-700 hover:text-purple-600">Contact</a></li>
-          </ul>
-        </nav>
-        <div className="text-2xl text-gray-700 cursor-pointer">☰</div>
-      </header>
+    const handleLoginClick = () => {
+        navigate("/login"); // Navigate to the Login page
+    };
 
-      {/* Hero Section */}
-      <section className="flex flex-col lg:flex-row items-center px-12 lg:px-24 py-20">
-        {/* Text Content */}
-        <div className="lg:w-1/2">
-          <h1 className="text-5xl font-bold text-gray-800 leading-tight">
-            Task Manager <br />
-            <span className="text-purple-600">Manage</span>
-          </h1>
-          <p className="mt-4 text-xl text-gray-600">Manage your tasks</p>
-          <p className="mt-2 text-gray-500">
-            Organize your tasks, increase your productivity, and track your progress.
-          </p>
-          <button
-            onClick={handleGetStartedClick}
-            className="inline-block bg-purple-600 text-white text-lg font-medium px-6 py-3 rounded-lg shadow-md mt-6 hover:bg-purple-700 transition"
-          >
-            Get Started
-          </button>
+    const toggleDarkMode = () => {
+        setDarkMode(!darkMode); // Toggle dark mode
+    };
+
+    return (
+        <div
+            className={`min-h-screen font-sans ${darkMode ? "bg-gray-800 text-white" : "bg-purple-50 text-gray-800"
+                }`}
+        >
+            {/* Dark Mode Toggle */}
+            <div className="absolute top-4 right-4">
+                <button
+                    onClick={toggleDarkMode}
+                    className="p-3 rounded-full bg-white text-gray-600 dark:text-gray-300 shadow-md"
+                    aria-label="Toggle Dark Mode"
+                >
+                    {darkMode ? <Sun /> : <Moon />}
+                </button>
+            </div>
+
+            {/* Hero Section */}
+            <section className="flex flex-col items-center justify-center h-full text-center px-6">
+                {/* Text Content */}
+                <div className="max-w-2xl mt-20">
+                    <h1 className="text-4xl font-bold leading-snug">
+                        Work Organized,<span className="text-purple-600">Life Simplified</span>
+                    </h1>
+                    <p className="mt-4 text-base">
+                        Organize your tasks, increase your productivity, and track your progress.
+                    </p>
+                    <div className="flex justify-center space-x-4 mt-6">
+                        <button
+                            onClick={handleGetStartedClick}
+                            className="bg-purple-600 text-white text-lg font-medium px-8 py-3 rounded-full shadow-md hover:bg-purple-700 transition"
+                        >
+                            Get Started
+                        </button>
+                        <button
+                            onClick={handleLoginClick}
+                            className={`text-purple-600 border-2 border-purple-600 text-lg font-medium px-8 py-3 rounded-full shadow-md hover:bg-purple-100 ${darkMode ? "hover:bg-purple-800 hover:text-white" : ""
+                                } transition`}
+                        >
+                            Login
+                        </button>
+                    </div>
+                </div>
+            </section>
         </div>
-
-        {/* Illustration */}
-        <div className="lg:w-1/2 mt-10 lg:mt-0">
-          <img
-            src="/illustration.png" /* Update with the correct path to your image */
-            alt="Task Manager Illustration"
-            className="w-full"
-          />
-        </div>
-      </section>
-    </div>
-  );
+    );
 };
 
 export default Landing;

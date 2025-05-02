@@ -14,14 +14,14 @@ const Dashboard = () => {
     const completionPercentage = 60;
 
     return (
-        <div className="min-h-screen flex bg-gray-100">
+        <div className="min-h-screen flex bg-gray-50">
             {/* Sidebar */}
             <nav className="w-64 bg-white shadow-lg p-6 flex flex-col">
                 <div className="flex items-center space-x-3 mb-10">
                     <div className="text-purple-600 text-2xl font-bold">TaskBot</div>
                 </div>
                 <div className="mb-8">
-                    <p className="text-gray-600 text-lg font-medium">{userName}</p>
+                    <p className="text-gray-700 text-lg font-medium">{userName}</p>
                 </div>
                 <ul className="space-y-4">
                     <li>
@@ -30,7 +30,7 @@ const Dashboard = () => {
                             className={({ isActive }) =>
                                 isActive
                                     ? "flex items-center text-purple-600 font-semibold"
-                                    : "flex items-center text-gray-600 hover:text-purple-600 transition"
+                                    : "flex items-center text-gray-700 hover:text-purple-600 transition"
                             }
                         >
                             <Home className="w-5 h-5 mr-2" />
@@ -43,7 +43,7 @@ const Dashboard = () => {
                             className={({ isActive }) =>
                                 isActive
                                     ? "flex items-center text-purple-600 font-semibold"
-                                    : "flex items-center text-gray-600 hover:text-purple-600 transition"
+                                    : "flex items-center text-gray-700 hover:text-purple-600 transition"
                             }
                         >
                             <CheckSquare className="w-5 h-5 mr-2" />
@@ -56,7 +56,7 @@ const Dashboard = () => {
                             className={({ isActive }) =>
                                 isActive
                                     ? "flex items-center text-purple-600 font-semibold"
-                                    : "flex items-center text-gray-600 hover:text-purple-600 transition"
+                                    : "flex items-center text-gray-700 hover:text-purple-600 transition"
                             }
                         >
                             <Briefcase className="w-5 h-5 mr-2" />
@@ -69,7 +69,7 @@ const Dashboard = () => {
                             className={({ isActive }) =>
                                 isActive
                                     ? "flex items-center text-purple-600 font-semibold"
-                                    : "flex items-center text-gray-600 hover:text-purple-600 transition"
+                                    : "flex items-center text-gray-700 hover:text-purple-600 transition"
                             }
                         >
                             <Calendar className="w-5 h-5 mr-2" />
@@ -82,7 +82,7 @@ const Dashboard = () => {
                             className={({ isActive }) =>
                                 isActive
                                     ? "flex items-center text-purple-600 font-semibold"
-                                    : "flex items-center text-gray-600 hover:text-purple-600 transition"
+                                    : "flex items-center text-gray-700 hover:text-purple-600 transition"
                             }
                         >
                             <BarChart2 className="w-5 h-5 mr-2" />
@@ -95,7 +95,7 @@ const Dashboard = () => {
                             className={({ isActive }) =>
                                 isActive
                                     ? "flex items-center text-purple-600 font-semibold"
-                                    : "flex items-center text-gray-600 hover:text-purple-600 transition"
+                                    : "flex items-center text-gray-700 hover:text-purple-600 transition"
                             }
                         >
                             <Settings className="w-5 h-5 mr-2" />
@@ -104,7 +104,7 @@ const Dashboard = () => {
                     </li>
                 </ul>
                 <div className="mt-auto">
-                    <button className="flex items-center text-gray-600 hover:text-purple-600 transition">
+                    <button className="flex items-center text-gray-700 hover:text-purple-600 transition">
                         <span className="mr-2">Logout</span>
                     </button>
                 </div>
@@ -114,27 +114,27 @@ const Dashboard = () => {
             <div className="flex-1 p-8">
                 <header className="mb-10 flex justify-between items-center">
                     <div>
-                        <h1 className="text-3xl font-extrabold text-purple-800 ">Dashboard</h1>
+                        <h1 className="text-3xl font-extrabold text-purple-800">Dashboard</h1>
                         <p className="text-lg text-gray-600">Your productivity at a glance</p>
                     </div>
                 </header>
                 <main className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
                     {/* Today's Tasks */}
-                    <div className="bg-white rounded-2xl shadow-md hover:shadow-lg transition-shadow p-6">
+                    <div className="bg-white rounded-xl shadow-md hover:shadow-lg transition-shadow p-6">
                         <h2 className="text-lg font-semibold text-gray-700 mb-4">Today's Tasks</h2>
                         <p className="text-6xl font-bold text-blue-500">{todayTasks.length}</p>
                         <p className="text-gray-500">tasks</p>
                     </div>
 
                     {/* Overdue Tasks */}
-                    <div className="bg-white rounded-2xl shadow-md hover:shadow-lg transition-shadow p-6">
+                    <div className="bg-white rounded-xl shadow-md hover:shadow-lg transition-shadow p-6">
                         <h2 className="text-lg font-semibold text-gray-700 mb-4">Overdue Tasks</h2>
                         <p className="text-6xl font-bold text-red-500">{overdueTasks}</p>
                         <p className="text-gray-500">task</p>
                     </div>
 
                     {/* Upcoming Tasks */}
-                    <div className="bg-white rounded-2xl shadow-md hover:shadow-lg transition-shadow p-6">
+                    <div className="bg-white rounded-xl shadow-md hover:shadow-lg transition-shadow p-6">
                         <h2 className="text-lg font-semibold text-gray-700 mb-4">Upcoming Tasks</h2>
                         <ul className="space-y-2">
                             {upcomingTasks.map((task, index) => (
@@ -147,7 +147,7 @@ const Dashboard = () => {
                     </div>
 
                     {/* Task List */}
-                    <div className="bg-white rounded-2xl shadow-md hover:shadow-lg transition-shadow p-6 col-span-full lg:col-span-2">
+                    <div className="bg-white rounded-xl shadow-md hover:shadow-lg transition-shadow p-6 col-span-full lg:col-span-2">
                         <h2 className="text-lg font-semibold text-gray-700 mb-4">Today's Task List</h2>
                         <ul className="space-y-3">
                             {todayTasks.map((task, index) => (
@@ -164,7 +164,7 @@ const Dashboard = () => {
                     </div>
 
                     {/* Completion Progress */}
-                    <div className="bg-white rounded-2xl shadow-md hover:shadow-lg transition-shadow p-6 flex flex-col items-center">
+                    <div className="bg-white rounded-xl shadow-md hover:shadow-lg transition-shadow p-6 flex flex-col items-center">
                         <h2 className="text-lg font-semibold text-gray-700 mb-4">Completion Progress</h2>
                         <div className="relative w-32 h-32">
                             <svg className="w-full h-full" viewBox="0 0 36 36">

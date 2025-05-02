@@ -1,10 +1,21 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { Sun, Moon } from "lucide-react"; // Importing icons from lucide-react
 
-const Landing = () => {
-    const navigate = useNavigate(); // Hook to navigate between routes
-    const [darkMode, setDarkMode] = useState(false); // State for dark mode
+const LandingPage = () => {
+    const navigate = useNavigate(); // Initialize useNavigate to enable navigation
+    const [darkMode, setDarkMode] = useState(() => localStorage.getItem('theme') === 'dark');
+    const [CancelStick, setCancelStick] = useState(true);
+
+    useEffect(() => {
+        if (darkMode) {
+            document.documentElement.classList.add('dark');
+            localStorage.setItem('theme', 'dark');
+        } else {
+            document.documentElement.classList.remove('dark');
+            localStorage.removeItem('theme');
+        }
+    }, [darkMode]);
 
     const handleGetStartedClick = () => {
         navigate("/register"); // Navigate to the Register page
@@ -20,8 +31,9 @@ const Landing = () => {
 
     return (
         <div
-            className={`min-h-screen font-sans ${darkMode ? "bg-gray-800 text-white" : "bg-purple-50 text-gray-800"
-                }`}
+            className={`min-h-screen font-sans ${
+                darkMode ? "bg-gray-800 text-white" : "bg-purple-50 text-gray-800"
+            }`}
         >
             {/* Dark Mode Toggle */}
             <div className="absolute top-4 right-4">
@@ -39,7 +51,7 @@ const Landing = () => {
                 {/* Text Content */}
                 <div className="max-w-2xl mt-20">
                     <h1 className="text-4xl font-bold leading-snug">
-                        Work Organized,<span className="text-purple-600">Life Simplified</span>
+                        Work Organized, <span className="text-purple-600">Life Simplified</span>
                     </h1>
                     <p className="mt-4 text-base">
                         Organize your tasks, increase your productivity, and track your progress.
@@ -53,8 +65,9 @@ const Landing = () => {
                         </button>
                         <button
                             onClick={handleLoginClick}
-                            className={`text-purple-600 border-2 border-purple-600 text-lg font-medium px-8 py-3 rounded-full shadow-md hover:bg-purple-100 ${darkMode ? "hover:bg-purple-800 hover:text-white" : ""
-                                } transition`}
+                            className={`text-purple-600 border-2 border-purple-600 text-lg font-medium px-8 py-3 rounded-full shadow-md hover:bg-purple-100 ${
+                                darkMode ? "hover:bg-purple-800 hover:text-white" : ""
+                            } transition`}
                         >
                             Login
                         </button>
@@ -65,4 +78,4 @@ const Landing = () => {
     );
 };
 
-export default Landing;
+export default LandingPage;

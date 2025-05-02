@@ -28,7 +28,7 @@ const Register = () => {
 
       // Navigate to the home page after successful registration
       setTimeout(() => {
-        navigate("/");
+        navigate("/app/dashboard");
       }, 1500);
     } catch (err) {
       // Log the error for debugging

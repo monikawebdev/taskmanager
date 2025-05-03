@@ -1,6 +1,6 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
-import { Home, CheckSquare, Briefcase, Calendar, BarChart2, Settings } from "lucide-react";
+import { Home, CheckSquare, Briefcase, Calendar, BarChart2, Settings, LogOut, User } from "lucide-react";
 
 const Dashboard = () => {
     const userName = "Monika Pal"; // Replace with dynamic user data if needed
@@ -15,25 +15,48 @@ const Dashboard = () => {
 
     return (
         <div className="min-h-screen flex bg-gray-50">
-            {/* Sidebar */}
             <nav className="w-64 bg-white shadow-lg p-6 flex flex-col">
-                <div className="flex items-center space-x-3 mb-10">
-                    <div className="text-purple-600 text-2xl font-bold">TaskBot</div>
+                {/* Logo and Minimize Button */}
+                <div className="flex items-center justify-between mb-8">
+                    <div className="text-purple-600 text-2xl font-bold">TaskManage</div>
+                    <button className="p-2 rounded-full bg-gray-100 hover:bg-gray-200">
+                        <span className="sr-only">Minimize Sidebar</span>
+                        <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            className="h-5 w-5 text-gray-600"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                        >
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 12H5" />
+                        </svg>
+                    </button>
                 </div>
-                <div className="mb-8">
-                    <p className="text-gray-700 text-lg font-medium">{userName}</p>
+
+                {/* User Info */}
+                <div className="flex items-center mb-10">
+                    <div className="p-2 bg-gray-100 rounded-full">
+                        <User className="h-6 w-6 text-gray-600" />
+                    </div>
+                    <div className="ml-4">
+                        <p className="text-gray-800 text-base font-medium">{userName}</p>
+                        <button className="bg-purple-100 text-purple-600 text-xs font-semibold px-3 py-1 rounded-full">
+                            UPGRADE
+                        </button>
+                    </div>
                 </div>
+
+                {/* Navigation Links */}
                 <ul className="space-y-4">
                     <li>
                         <NavLink
                             to="/dashboard"
                             className={({ isActive }) =>
-                                isActive
-                                    ? "flex items-center text-purple-600 font-semibold"
-                                    : "flex items-center text-gray-700 hover:text-purple-600 transition"
+                                `flex items-center text-sm font-medium px-3 py-2 rounded-md ${isActive ? "bg-blue-50 text-blue-600" : "text-gray-600 hover:bg-gray-100"
+                                }`
                             }
                         >
-                            <Home className="w-5 h-5 mr-2" />
+                            <Home className="w-5 h-5 mr-3" />
                             Dashboard
                         </NavLink>
                     </li>
@@ -41,74 +64,80 @@ const Dashboard = () => {
                         <NavLink
                             to="/taskpage"
                             className={({ isActive }) =>
-                                isActive
-                                    ? "flex items-center text-purple-600 font-semibold"
-                                    : "flex items-center text-gray-700 hover:text-purple-600 transition"
+                                `flex items-center text-sm font-medium px-3 py-2 rounded-md ${isActive ? "bg-blue-50 text-blue-600" : "text-gray-600 hover:bg-gray-100"
+                                }`
                             }
                         >
-                            <CheckSquare className="w-5 h-5 mr-2" />
-                            Task Page
+                            <CheckSquare className="w-5 h-5 mr-3" />
+                            Tasks
                         </NavLink>
                     </li>
                     <li>
                         <NavLink
                             to="/projectpage"
                             className={({ isActive }) =>
-                                isActive
-                                    ? "flex items-center text-purple-600 font-semibold"
-                                    : "flex items-center text-gray-700 hover:text-purple-600 transition"
+                                `flex items-center text-sm font-medium px-3 py-2 rounded-md ${isActive ? "bg-blue-50 text-blue-600" : "text-gray-600 hover:bg-gray-100"
+                                }`
                             }
                         >
-                            <Briefcase className="w-5 h-5 mr-2" />
-                            Project Page
+                            <Briefcase className="w-5 h-5 mr-3" />
+                            Projects
                         </NavLink>
                     </li>
                     <li>
                         <NavLink
                             to="/todayview"
                             className={({ isActive }) =>
-                                isActive
-                                    ? "flex items-center text-purple-600 font-semibold"
-                                    : "flex items-center text-gray-700 hover:text-purple-600 transition"
+                                `flex items-center text-sm font-medium px-3 py-2 rounded-md ${isActive ? "bg-blue-50 text-blue-600" : "text-gray-600 hover:bg-gray-100"
+                                }`
                             }
                         >
-                            <Calendar className="w-5 h-5 mr-2" />
+                            <Calendar className="w-5 h-5 mr-3" />
                             Today View
                         </NavLink>
                     </li>
                     <li>
                         <NavLink
-                            to="/report"
+                            to="/reports"
                             className={({ isActive }) =>
-                                isActive
-                                    ? "flex items-center text-purple-600 font-semibold"
-                                    : "flex items-center text-gray-700 hover:text-purple-600 transition"
+                                `flex items-center text-sm font-medium px-3 py-2 rounded-md ${isActive ? "bg-blue-50 text-blue-600" : "text-gray-600 hover:bg-gray-100"
+                                }`
                             }
                         >
-                            <BarChart2 className="w-5 h-5 mr-2" />
-                            Report
+                            <BarChart2 className="w-5 h-5 mr-3" />
+                            Reports
                         </NavLink>
                     </li>
                     <li>
                         <NavLink
                             to="/settings"
                             className={({ isActive }) =>
-                                isActive
-                                    ? "flex items-center text-purple-600 font-semibold"
-                                    : "flex items-center text-gray-700 hover:text-purple-600 transition"
+                                `flex items-center text-sm font-medium px-3 py-2 rounded-md ${isActive ? "bg-blue-50 text-blue-600" : "text-gray-600 hover:bg-gray-100"
+                                }`
                             }
                         >
-                            <Settings className="w-5 h-5 mr-2" />
+                            <Settings className="w-5 h-5 mr-3" />
                             Settings
                         </NavLink>
                     </li>
                 </ul>
+
+                {/* Logout Button */}
                 <div className="mt-auto">
-                    <button className="flex items-center text-gray-700 hover:text-purple-600 transition">
-                        <span className="mr-2">Logout</span>
+                    <button className="flex items-center text-sm font-medium text-gray-600 hover:text-red-600 px-3 py-2">
+                        <LogOut className="w-5 h-5 mr-3" />
+                        Logout
                     </button>
                 </div>
             </nav>
+            {/* Logout Button */}
+            <div className="mt-auto">
+                <button className="flex items-center text-sm font-medium text-gray-600 hover:text-red-600 px-3 py-2">
+                    <LogOut className="w-5 h-5 mr-3" />
+                    Logout
+                </button>
+            </div>
+
 
             {/* Main Content */}
             <div className="flex-1 p-8">

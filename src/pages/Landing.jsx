@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import {
-    Wallet, X, PieChart, DollarSign, TrendingUp, Target, Users, Goal, ChartNetwork, Radar, ChartNoAxesGantt,
+    ClipboardCheck, X, PieChart, DollarSign, TrendingUp, Target, Users, Goal, ChartNetwork, Radar, ChartNoAxesGantt,
     ChevronRight, Shield, RefreshCw, Moon, Sun, Check, BarChart2, Calendar, TrendingDown, HandCoins, Menu, Clock, Flag, Watch
 } from 'lucide-react';
 import { Helmet } from 'react-helmet';
@@ -432,8 +432,8 @@ const LandingPage = () => {
                     <div className="max-w-5xl mx-auto grid md:grid-cols-4 gap-8">
                         <div>
                             <div className="flex items-center gap-2 mb-4">
-                                <Wallet className="h-6 w-6 text-blue-500" />
-                                <span className="text-lg font-bold text-white">FinanceGet</span>
+                                <ClipboardCheck className=" h-6 w-6 text-purple-500" />
+                                  <span className="text-lg font-bold text-white">TaskManager</span>
                             </div>
                             <p className="text-sm">Simplify your work life.</p>
                         </div>

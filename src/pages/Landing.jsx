@@ -6,7 +6,7 @@ import {
     ChevronRight, Shield, RefreshCw, Moon, Sun, Check, BarChart2, Calendar, TrendingDown, HandCoins, Menu, Clock, Flag, Watch
 } from 'lucide-react';
 import { Helmet } from 'react-helmet';
-// import LandingIMG from "../meta/imgs/Dashboard.png";
+import LandingIMG from "../meta/imgs/Dashboard.png";
 // import tweetCard from "../meta/imgs/tweet-card.png";
 // import LandingpageIMG from "../meta/imgs/Landing-page-financeGet.png";
 
@@ -159,9 +159,7 @@ const LandingPage = () => {
                             Watch how TaskManager simplifies your financial life.
                         </p>
                         <div className="relative max-w-3xl mx-auto">
-                            {/* <img src={LandingIMG} alt="FinanceGet Demo" className="rounded-lg shadow-lg w-full" /> */}
-                            {/* <img src={tweetCard} alt="FinanceGet Demo" className="rounded-lg shadow-lg w-full" /> */}
-                            {/* <img src={LandingpageIMG} alt="FinanceGet Demo" className="rounded-lg shadow-lg w-full" /> */}
+                            <img src={LandingIMG} alt="TaskManger Demo" className="rounded-lg shadow-lg w-full" />
                         </div>
                     </div>
                 </motion.section>
@@ -433,7 +431,7 @@ const LandingPage = () => {
                         <div>
                             <div className="flex items-center gap-2 mb-4">
                                 <ClipboardCheck className=" h-6 w-6 text-purple-500" />
-                                  <span className="text-lg font-bold text-white">TaskManager</span>
+                                <span className="text-lg font-bold text-white">TaskManager</span>
                             </div>
                             <p className="text-sm">Simplify your work life.</p>
                         </div>

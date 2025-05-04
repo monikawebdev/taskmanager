@@ -11,15 +11,17 @@ import LandingIMG from "../meta/imgs/Dashboard.png";
 // import LandingpageIMG from "../meta/imgs/Landing-page-financeGet.png";
 
 const COLORS = {
-    primary: '#3B82F6', // Changed to blue
+    primary: '#6366F1',
     accent: '#FBBF24',
-    bgLight: '#FFFFFF', // White background
-    textDark: '#000000', // Black text
-    textLight: '#4B5563',
+    bgLight: '#F9FAFB',
+    bgDark: '#0a0a0a',
+    textDark: '#1F2937',
+    textLight: '#6B7280',
 };
 
+
 const LandingPage = () => {
-    const [darkMode, setDarkMode] = useState(false); // Default to light mode
+    const [darkMode, setDarkMode] = useState(() => localStorage.getItem('theme') === 'dark');
     const [CancelStick, setCancelStick] = useState(true);
 
     useEffect(() => {
@@ -33,6 +35,7 @@ const LandingPage = () => {
     }, [darkMode]);
 
     const toggleDarkMode = () => setDarkMode(prev => !prev);
+
 
     const features = [
         { title: "Task Organization", description: "Effortlessly plan and prioritize your tasks.", icon: <Menu /> },
@@ -86,7 +89,7 @@ const LandingPage = () => {
 
     return (
         <>
-            <Helmet>
+            {/* <Helmet>
                 <title>FinanceGet ~ Master Your Finances</title>
                 <meta property="og:title" content="FinanceGet" />
                 <meta
@@ -107,15 +110,14 @@ const LandingPage = () => {
                 />
                 <meta name="twitter:image" content="https://financeget.vercel.app/assets/tweet-card-tHslKEPd.png" />
                 <meta name="twitter:url" content="https://financeget.vercel.app/" />
-            </Helmet>
+            </Helmet> */}
 
             <div className="min-h-screen bg-white text-black transition-colors duration-300">
-                {/* Theme Toggle Button - Hidden but keeping the code for potential future use */}
+                {/* Theme Toggle Button */}
                 <button
                     onClick={toggleDarkMode}
-                    className="fixed top-4 right-4 p-2 rounded-full bg-gray-50 text-gray-600 hover:bg-gray-100 transition-all duration-200 z-50"
+                    className="fixed top-4 right-4 p-2 rounded-full bg-gray-50 dark:bg-[#ffffff17] text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-[#ffffff24] transition-all duration-200 z-50"
                     aria-label="Toggle theme"
-                    style={{ display: 'none' }} // Hide the button
                 >
                     {darkMode ? <Sun size={20} /> : <Moon size={20} />}
                 </button>
@@ -138,7 +140,7 @@ const LandingPage = () => {
                             <Link to="/register" className="inline-flex items-center gap-2 bg-purple-600 text-white px-6 py-3 rounded-lg font-medium hover:bg-blue-700 shadow-md transition-all duration-200">
                                 Start Free <ChevronRight size={18} />
                             </Link>
-                            <Link to="/login" className="inline-flex items-center gap-2 bg-white text-blue-600 px-6 py-3 rounded-lg font-medium border border-blue-600 hover:bg-blue-50 shadow-md transition-all duration-200">
+                            <Link to="/login" className="inline-flex items-center gap-2 bg-white text-purple-600 px-6 py-3 rounded-lg font-medium border border-purple-600 hover:bg-purple-50 shadow-md transition-all duration-200">
                                 Sign In
                             </Link>
                         </div>
@@ -266,42 +268,42 @@ const LandingPage = () => {
 
                 {/* Pricing Section */}
                 {/* <motion.section
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-          viewport={{ once: true }}
-          className="py-16 px-4"
-        >
-          <div className="max-w-5xl mx-auto">
-            <h2 className="text-3xl md:text-4xl font-bold text-center mb-3">Choose Your Plan</h2>
-            <p className="text-lg text-gray-600 text-center mb-12">Start for free or unlock premium financial tools.</p>
-            <div className="grid md:grid-cols-2 gap-8">
-              {pricingPlans.map((plan, index) => (
-                <div key={index} className={`p-6 rounded-[1.4rem] shadow-md transition-all duration-300 border ${plan.highlighted ? 'bg-gradient-to-r from-blue-500 to-blue-700 text-white border border-blue-400 transform -translate-y-2 shadow-lg' : 'bg-gray-50 border-gray-100 hover:shadow-lg hover:-translate-y-1'}`}>
-                  <h3 className="text-xl font-semibold mb-2">{plan.name}</h3>
-                  <div className="flex items-baseline gap-1 mb-4">
-                    <span className="text-4xl font-bold">{plan.price}</span>
-                    {plan.priceSubtext && (
-                      <span className={`text-sm ${plan.highlighted ? 'text-blue-200' : 'text-gray-600'}`}>{plan.priceSubtext}</span>
-                    )}
-                  </div>
-                  <p className={`text-sm mb-6 ${plan.highlighted ? 'text-blue-100' : 'text-gray-600'}`}>{plan.description}</p>
-                  <ul className="space-y-3 mb-6">
-                    {plan.features.map((feature, i) => (
-                      <li key={i} className="flex items-center gap-2">
-                        <Check size={16} className={plan.highlighted ? 'text-blue-200' : 'text-blue-600'} />
-                        <span className={plan.highlighted ? 'text-blue-100' : 'text-gray-700'}>{feature}</span>
-                      </li>
-                    ))}
-                  </ul>
-                  <Link to={plan.link} className={`inline-flex items-center justify-center w-full gap-2 px-6 py-4 rounded-[.7rem] font-medium transition-all duration-200 ${plan.highlighted ? 'bg-white text-blue-600 hover:bg-blue-50 shadow-sm' : 'bg-gradient-to-r from-blue-500 to-blue-700 text-white border border-blue-400 shadow-sm'}`}>
-                    {plan.cta} <ChevronRight size={16} />
-                  </Link>
-                </div>
-              ))}
-            </div>
-          </div>
-        </motion.section> */}
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.5 }}
+                    viewport={{ once: true }}
+                    className="py-16 px-4"
+                >
+                    <div className="max-w-5xl mx-auto">
+                        <h2 className="text-3xl md:text-4xl font-bold text-center mb-3">Choose Your Plan</h2>
+                        <p className="text-lg text-gray-600 text-center mb-12">Start for free or unlock premium financial tools.</p>
+                        <div className="grid md:grid-cols-2 gap-8">
+                            {pricingPlans.map((plan, index) => (
+                                <div key={index} className={`p-6 rounded-[1.4rem] shadow-md transition-all duration-300 border ${plan.highlighted ? 'bg-gradient-to-r from-blue-500 to-blue-700 text-white border border-blue-400 transform -translate-y-2 shadow-lg' : 'bg-gray-50 border-gray-100 hover:shadow-lg hover:-translate-y-1'}`}>
+                                    <h3 className="text-xl font-semibold mb-2">{plan.name}</h3>
+                                    <div className="flex items-baseline gap-1 mb-4">
+                                        <span className="text-4xl font-bold">{plan.price}</span>
+                                        {plan.priceSubtext && (
+                                            <span className={`text-sm ${plan.highlighted ? 'text-blue-200' : 'text-gray-600'}`}>{plan.priceSubtext}</span>
+                                        )}
+                                    </div>
+                                    <p className={`text-sm mb-6 ${plan.highlighted ? 'text-blue-100' : 'text-gray-600'}`}>{plan.description}</p>
+                                    <ul className="space-y-3 mb-6">
+                                        {plan.features.map((feature, i) => (
+                                            <li key={i} className="flex items-center gap-2">
+                                                <Check size={16} className={plan.highlighted ? 'text-blue-200' : 'text-blue-600'} />
+                                                <span className={plan.highlighted ? 'text-blue-100' : 'text-gray-700'}>{feature}</span>
+                                            </li>
+                                        ))}
+                                    </ul>
+                                    <Link to={plan.link} className={`inline-flex items-center justify-center w-full gap-2 px-6 py-4 rounded-[.7rem] font-medium transition-all duration-200 ${plan.highlighted ? 'bg-white text-blue-600 hover:bg-blue-50 shadow-sm' : 'bg-gradient-to-r from-blue-500 to-blue-700 text-white border border-blue-400 shadow-sm'}`}>
+                                        {plan.cta} <ChevronRight size={16} />
+                                    </Link>
+                                </div>
+                            ))}
+                        </div>
+                    </div>
+                </motion.section> */}
 
                 {/* Statistics Section */}
                 <motion.section
